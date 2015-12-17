@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="baseballSearch">
+<head>
+	<link rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div ng-app="angularApp" ng-controller="SearchController as searchCtrl" ng-submit="searchCtrl.search(baseball)">
+		Category: <select	ng-model="category"
+		<option value="AllstarFull">All star</option>
+		<option value="Appearances">Appearances</option>
+		<option value="AwardsManagers">Manager Awards</option>
+		<option value="AwardsPlayers">Player Awards</option>
+		<option value="AwardsSharedManagers">Shared Manager Awards</option>
+		<option value="AwardsSharedPlayers">Shared Player Awards</option>
+		<option value="Batting">Batting</option>
+		</select>
+		Search: <input ng-model="search">
+		<button> Search </button>
+	</div>
+	<div ng-app="angularApp" ng-controller="BaseballController as baseball" class="searchResults">
+		<table ng-hide="baseball.product.noFile">
+			<tr ng-repeat="product in baseball.products">
+				<td>{{ product }}</td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript" src="angularApp.js"></script>
+</body>
+</html>
