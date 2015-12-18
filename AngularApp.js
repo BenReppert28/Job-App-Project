@@ -1,6 +1,24 @@
 (function(){
   var app = angular.module('baseballSearch', []);
-  
+	'use strict';
+
+	.controller('BaseballSearchController', ['$scope', '$log', function($scope, $log) {
+		$scope.getResults = function(){
+			$log.log("test");
+			
+			//get the Search data from the input
+			var userInput = $scope.input_query;
+			//fire the API request
+			$http.post('/start', {"query": userInput}).
+			  success(function(results){
+				$log.log(results);
+			  }).
+			  error(function(error){
+				$log.log(error);
+			  });
+		};
+	}
+	
   app.controller("BaseballController", function(){
 	  this.products = searches;
   });
