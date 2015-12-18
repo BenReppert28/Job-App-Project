@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="baseballSearch">
+<html>
 <head>
-	<link rel="stylesheet" type="text/css" />
+	<link rel="app.css" type="text/css" />
 </head>
 
 <body>
-	<div ng-app="angularApp" ng-controller="SearchController as searchCtrl" ng-submit="searchCtrl.search(baseball)">
-		Category: <select	ng-model="category"
+	
+	<div id="userInput">
+		<h1>Category:</h1>
+		<form role="form" ng-submit="getResults()">
+		<select>
 		<option value="AllstarFull">All star</option>
 		<option value="Appearances">Appearances</option>
 		<option value="AwardsManagers">Manager Awards</option>
@@ -15,13 +18,15 @@
 		<option value="AwardsSharedPlayers">Shared Player Awards</option>
 		<option value="Batting">Batting</option>
 		</select>
-		Search: <input ng-model="search">
-		<button> Search </button>
+		<input type="text" ng-model="input_query" name="query" class="form-control" id="query-box" placeholder="Search" style="max-width: 300px;" required>
+		<button type="submit" class="btn btn-default">Search</button>
+		</form>
 	</div>
-	<div ng-app="angularApp" ng-controller="BaseballController as baseball" class="searchResults">
+	
+	<div id="searchOutput">
 		<table ng-hide="baseball.product.noFile">
 			<tr ng-repeat="product in baseball.products">
-				<td>{{ product }}</td>
+				<td>{{product}}</td>
 			</tr>
 		</table>
 	</div>
